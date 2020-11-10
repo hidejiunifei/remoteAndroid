@@ -6,13 +6,13 @@ Using the otg the code can also be deployed by ArduinoDroid
 uses-permission used android.permission.RECORD_AUDIO  
 Additional configuration for project gradle:  
 
-allprojects {  
-    repositories {  
-        google()  
-        jcenter()  
-->        maven { url "https://jitpack.io" }  
+    allprojects {  
+        repositories {  
+            google()  
+            jcenter()  
+            maven { url "https://jitpack.io" }  
+        }  
     }  
-}  
 
 Additional configuration for app gradle:  
 
