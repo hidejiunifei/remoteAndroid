@@ -12,8 +12,8 @@ import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.felhr.usbserial.UsbSerialDevice
 import com.felhr.usbserial.UsbSerialInterface
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,10 +29,14 @@ class MainActivity : AppCompatActivity() {
     var connection : UsbDeviceConnection? = null
 
     val ACTION_USER_PERMISSION = "permission"
+    private val PermissionsRequestCode = 123
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val permissions = arrayOf(android.Manifest.permission.RECORD_AUDIO)
+        ActivityCompat.requestPermissions(this, permissions, PermissionsRequestCode)
 
         usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
 
